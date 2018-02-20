@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
 
-    <link rel="manifest" href="manifest.json">
-
-    <!-- un-comment this code to enable service worker
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+  <link rel="manifest" href="manifest.json">
+  <!-- un-comment this code to enable service worker
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js')
@@ -15,26 +14,60 @@
           .catch(err => console.log('Error', err));
       }
     </script>-->
+  <!--<link href="lib/ionic/css/ionic.css" rel="stylesheet">-->
+  <!--<link href="css/style.css" rel="stylesheet">-->
+  <!--IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above-->
+  <link href="css/ionic.app.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <link href="css/orientation_utils.css" rel="stylesheet">
+  <link href="css/reset.css" rel="stylesheet">
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+  <!-- your app's js -->
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script type="text/javascript" src="js/createjs-2015.11.26.min.js"></script>
+  <script type="text/javascript" src="js/howler.min.js"></script>
+  <script type="text/javascript" src="js/screenfull.js"></script>
+  <script type="text/javascript" src="js/ctl_utils.js"></script>
+  <script type="text/javascript" src="js/sprite_lib.js"></script>
+  <script type="text/javascript" src="js/settings.js"></script>
+  <script type="text/javascript" src="js/CRouletteSettings.js"></script>
+  <script type="text/javascript" src="js/CFichesController.js"></script>
+  <script type="text/javascript" src="js/CLang.js"></script>
+  <script type="text/javascript" src="js/CPreloader.js"></script>
+  <script type="text/javascript" src="js/CMain.js"></script>
+  <script type="text/javascript" src="js/CTextButton.js"></script>
+  <script type="text/javascript" src="js/CGfxButton.js"></script>
+  <script type="text/javascript" src="js/CFicheBut.js"></script>
+  <script type="text/javascript" src="js/CBetTableButton.js"></script>
+  <script type="text/javascript" src="js/CBetTextButton.js"></script>
+  <script type="text/javascript" src="js/CToggle.js"></script>
+  <script type="text/javascript" src="js/CMenu.js"></script>
+  <script type="text/javascript" src="js/CGame.js"></script>
+  <script type="text/javascript" src="js/CInterface.js"></script>
+  <script type="text/javascript" src="js/CMsgBox.js"></script>
+  <script type="text/javascript" src="js/CTweenController.js"></script>
+  <script type="text/javascript" src="js/CSeat.js"></script>
+  <script type="text/javascript" src="js/CTableController.js"></script>
+  <script type="text/javascript" src="js/CEnlight.js"></script>
+  <script type="text/javascript" src="js/CFiche.js"></script>
+  <script type="text/javascript" src="js/CHistoryRow.js"></script>
+  <script type="text/javascript" src="js/CWheelAnim.js"></script>
+  <script type="text/javascript" src="js/CFinalBetPanel.js"></script>
+  <script type="text/javascript" src="js/CNeighborsPanel.js"></script>
+  <script type="text/javascript" src="js/CGameOver.js"></script>
+  <script type="text/javascript" src="js/CCreditsPanel.js"></script>
+  <script type="text/javascript" src="js/CHistory.js"></script>
+  <script type="text/javascript" src="js/CRollingTextController.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+<body ng-app="starter" ondragstart="return false;" ondrop="return false;">
+  <ion-nav-view></ion-nav-view>
+</body>
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
-
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-  </head>
-
-  <body ng-app="starter">
-    <ion-nav-view></ion-nav-view>
-  </body>
 </html>
