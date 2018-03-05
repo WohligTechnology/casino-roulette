@@ -4,7 +4,7 @@ var CANVAS_HEIGHT = 768;
 var EDGEBOARD_X = 90;
 var EDGEBOARD_Y = 95;
 
-var FPS = 30;
+var FPS = 60;
 var FPS_TIME      = 1000/FPS;
 var DISABLE_SOUND_MOBILE = false;
 
