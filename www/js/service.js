@@ -11,9 +11,11 @@ angular.module('starter.service', [])
     // Some fake testing data
     return {
       memberData: function (accessToken, callback) {
-        $http.post(url + 'Member/getAccessLevel', {
-          accessToken: accessToken
-        }).then(callback);
+        $http.post(url + 'Member/getAccessLevel', accessToken).then(callback);
+      },
+
+      login: function (formData, callback) {
+        $http.post(url + 'Member/login', formData).then(callback);
       },
 
 
