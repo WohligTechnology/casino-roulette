@@ -1,55 +1,84 @@
 angular.module('starter.controllers', [])
 
-
-
-
-  .controller('HomeCtrl', function ($scope, $stateParams, $timeout) {
+  .controller('HomeCtrl', function ($scope, $stateParams, $timeout, Service) {
     $timeout(function () {
 
+      $scope.getMemberData = function (accessToken) {
+        Service.memberData(accessToken, function (response) {
+          if (response.value) {
+            $scope.oMain = {};
+            oMain.money = response.data.credit;
+            oMain.min_bet = 0.1;
+            oMain.max_bet = response.data.creditLimit; //MAXIMUM BET
+            oMain.time_bet = 0; //TIME TO WAIT FOR A BET IN MILLISECONDS. SET 0 IF YOU DON'T WANT BET LIMIT
+            oMain.time_winner = 1500; //TIME FOR WINNER SHOWING IN MILLISECONDS    
+            oMain.win_occurrence = 30; //Win occurrence percentage (100 = always win). 
+            //SET THIS VALUE TO -1 IF YOU WANT WIN OCCURRENCE STRICTLY RELATED TO PLAYER BET ( SEE DOCUMENTATION)
+            oMain.casino_cash = 1000; //The starting casino cash that is recharged by the money lost by the user
+            oMain.fullscreen = true; //SET THIS TO FALSE IF YOU DON'T WANT TO SHOW FULLSCREEN BUTTON
+            oMain.check_orientation = true; //SET TO FALSE IF YOU DON'T WANT TO SHOW ORIENTATION ALERT 
+            oMain.show_credits = true; //ENABLE/DISABLE CREDITS BUTTON IN THE MAIN SCREEN
+            oMain.num_hand_before_ads = 10; //NUMBER OF HANDS PLAYED BEFORE AD SHOWN
+          } else {
+            $scope.oMain = {};
+            oMain.money = 0;
+            oMain.min_bet = 0;
+            oMain.max_bet = 0; //MAXIMUM BET
+            oMain.time_bet = 0; //TIME TO WAIT FOR A BET IN MILLISECONDS. SET 0 IF YOU DON'T WANT BET LIMIT
+            oMain.time_winner = 1500; //TIME FOR WINNER SHOWING IN MILLISECONDS    
+            oMain.win_occurrence = 30; //Win occurrence percentage (100 = always win). 
+            //SET THIS VALUE TO -1 IF YOU WANT WIN OCCURRENCE STRICTLY RELATED TO PLAYER BET ( SEE DOCUMENTATION)
+            oMain.casino_cash = 1000; //The starting casino cash that is recharged by the money lost by the user
+            oMain.fullscreen = true; //SET THIS TO FALSE IF YOU DON'T WANT TO SHOW FULLSCREEN BUTTON
+            oMain.check_orientation = true; //SET TO FALSE IF YOU DON'T WANT TO SHOW ORIENTATION ALERT 
+            oMain.show_credits = true; //ENABLE/DISABLE CREDITS BUTTON IN THE MAIN SCREEN
+            oMain.num_hand_before_ads = 10; //NUMBER OF HANDS PLAYED BEFORE AD SHOWN
+          }
+        });
+      };
+      // var oMain = new CMain({
+      //   money: 1000, //STARING CREDIT FOR THE USER
+      //   min_bet: 0.1, //MINIMUM BET
+      //   max_bet: 1000, //MAXIMUM BET
+      //   time_bet: 0, //TIME TO WAIT FOR A BET IN MILLISECONDS. SET 0 IF YOU DON'T WANT BET LIMIT
+      //   time_winner: 1500, //TIME FOR WINNER SHOWING IN MILLISECONDS    
+      //   win_occurrence: 30, //Win occurrence percentage (100 = always win). 
+      //   //SET THIS VALUE TO -1 IF YOU WANT WIN OCCURRENCE STRICTLY RELATED TO PLAYER BET ( SEE DOCUMENTATION)
+      //   casino_cash: 1000, //The starting casino cash that is recharged by the money lost by the user
+      //   fullscreen: true, //SET THIS TO FALSE IF YOU DON'T WANT TO SHOW FULLSCREEN BUTTON
+      //   check_orientation: true, //SET TO FALSE IF YOU DON'T WANT TO SHOW ORIENTATION ALERT 
+      //   show_credits: true, //ENABLE/DISABLE CREDITS BUTTON IN THE MAIN SCREEN
+      //   num_hand_before_ads: 10 //NUMBER OF HANDS PLAYED BEFORE AD SHOWN
+      //   //
+      //   //// THIS FUNCTIONALITY IS ACTIVATED ONLY WITH CTL ARCADE PLUGIN.///////////////////////////
+      //   /////////////////// YOU CAN GET IT AT: /////////////////////////////////////////////////////////
+      //   // http://codecanyon.net/item/ctl-arcade-wordpress-plugin/13856421 ///////////
+      // });
 
-      var oMain = new CMain({
-        money: 1000, //STARING CREDIT FOR THE USER
-        min_bet: 0.1, //MINIMUM BET
-        max_bet: 1000, //MAXIMUM BET
-        time_bet: 0, //TIME TO WAIT FOR A BET IN MILLISECONDS. SET 0 IF YOU DON'T WANT BET LIMIT
-        time_winner: 1500, //TIME FOR WINNER SHOWING IN MILLISECONDS    
-        win_occurrence: 30, //Win occurrence percentage (100 = always win). 
-        //SET THIS VALUE TO -1 IF YOU WANT WIN OCCURRENCE STRICTLY RELATED TO PLAYER BET ( SEE DOCUMENTATION)
-        casino_cash: 1000, //The starting casino cash that is recharged by the money lost by the user
-        fullscreen: true, //SET THIS TO FALSE IF YOU DON'T WANT TO SHOW FULLSCREEN BUTTON
-        check_orientation: true, //SET TO FALSE IF YOU DON'T WANT TO SHOW ORIENTATION ALERT 
-        show_credits: true, //ENABLE/DISABLE CREDITS BUTTON IN THE MAIN SCREEN
-        num_hand_before_ads: 10 //NUMBER OF HANDS PLAYED BEFORE AD SHOWN
-        //
-        //// THIS FUNCTIONALITY IS ACTIVATED ONLY WITH CTL ARCADE PLUGIN.///////////////////////////
-        /////////////////// YOU CAN GET IT AT: /////////////////////////////////////////////////////////
-        // http://codecanyon.net/item/ctl-arcade-wordpress-plugin/13856421 ///////////
-      });
 
-
-      $(oMain).on("recharge", function (evt) {
+      $(scope.oMain).on("recharge", function (evt) {
         //alert("recharge");
       });
 
-      $(oMain).on("start_session", function (evt) {
+      $(scope.oMain).on("start_session", function (evt) {
         if (getParamValue('ctl-arcade') === "true") {
           parent.__ctlArcadeStartSession();
         }
         //...ADD YOUR CODE HERE EVENTUALLY
       });
 
-      $(oMain).on("end_session", function (evt) {
+      $(scope.oMain).on("end_session", function (evt) {
         if (getParamValue('ctl-arcade') === "true") {
           parent.__ctlArcadeEndSession();
         }
         //...ADD YOUR CODE HERE EVENTUALLY
       });
 
-      $(oMain).on("bet_placed", function (evt, iTotBet) {
+      $(scope.oMain).on("bet_placed", function (evt, iTotBet) {
         //...ADD YOUR CODE HERE EVENTUALLY
       });
 
-      $(oMain).on("save_score", function (evt, iMoney) {
+      $(scope.oMain).on("save_score", function (evt, iMoney) {
 
         if (getParamValue('ctl-arcade') === "true") {
           parent.__ctlArcadeSaveScore({
@@ -59,14 +88,14 @@ angular.module('starter.controllers', [])
         //...ADD YOUR CODE HERE EVENTUALLY
       });
 
-      $(oMain).on("show_interlevel_ad", function (evt) {
+      $(scope.oMain).on("show_interlevel_ad", function (evt) {
         if (getParamValue('ctl-arcade') === "true") {
           parent.__ctlArcadeShowInterlevelAD();
         }
         //...ADD YOUR CODE HERE EVENTUALLY
       });
 
-      $(oMain).on("share_event", function (evt, iMoney) {
+      $(scope.oMain).on("share_event", function (evt, iMoney) {
         if (getParamValue('ctl-arcade') === "true") {
           parent.__ctlArcadeShareEvent({
             img: "200x200.jpg",
