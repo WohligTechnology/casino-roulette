@@ -36,6 +36,7 @@ angular.module('starter.controllers', [])
           }
         });
       };
+
       // var oMain = new CMain({
       //   money: 1000, //STARING CREDIT FOR THE USER
       //   min_bet: 0.1, //MINIMUM BET

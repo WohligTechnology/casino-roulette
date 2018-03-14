@@ -6,25 +6,30 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <title></title>
   <link rel="manifest" href="manifest.json">
-  <!-- un-comment this code to enable service worker
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('service worker installed'))
-          .catch(err => console.log('Error', err));
-      }
-    </script>-->
-  <!--<link href="lib/ionic/css/ionic.css" rel="stylesheet">-->
-  <!--<link href="css/style.css" rel="stylesheet">-->
+
+  <!-- un-comment this code to enable service worker -->
+  <!-- <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.log('Error', err));
+    }
+
+  </script> -->
+
+
   <!--IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above-->
   <link href="css/ionic.app.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
   <link href="css/orientation_utils.css" rel="stylesheet">
   <link href="css/reset.css" rel="stylesheet">
+
   <!-- ionic/angularjs js -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>
+
   <!-- cordova script (this will be a 404 during development) -->
   <script src="cordova.js"></script>
+
   <!-- your app's js -->
   <script src="lib/jquery/dist/jquery.js"></script>
 
@@ -62,6 +67,7 @@
   <script type="text/javascript" src="js/CCreditsPanel.js"></script>
   <script type="text/javascript" src="js/CHistory.js"></script>
   <script type="text/javascript" src="js/CRollingTextController.js"></script>
+  <script src="js/service.js"></script>
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
 
